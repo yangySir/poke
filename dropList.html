@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-3.4.1.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .nav{
+            width: 1000px;
+            height: 40px;
+            background: #6eb49c;
+            margin: 20px auto;
+        }
+        ul:first-child{
+            width: 100%;
+            height: 100%;
+        }
+        .nav > ul:first-child > li{
+            width: 20%;
+            height: 100%;
+            float: left;
+            text-align: center;
+            color: #ffffff;
+            line-height: 40px;
+        }
+        ul.droplist{
+            display: none;
+        }
+        ul.droplist li{
+            background: #6eb49c;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li>网站首页</li>
+            <li>个人博客日记
+                <ul class="droplist">
+                    <li>html</li>
+                    <li>网站制作</li>
+                    <li>推荐工具</li>
+                </ul>
+            </li>
+            <li>网站制作</li>
+            <li>学习内容
+                <ul class="droplist">
+                    <li>html</li>
+                    <li>huisd</li>
+                    <li>推荐工具</li>
+                </ul>
+            </li>
+            <li>关于我们</li>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+
+       let dropBtn=$('li:has(.droplist)');
+       // let drop=$('.droplist');   //选择器
+       let drop=$('li').children('.droplist');  //children 查找
+       //      dropBtn.on('mouseenter',function () {
+       //           let index=$(this).index('li:has(.droplist)');
+       //          $(drop[index]).slideDown(100,'linear');
+       // });
+       //      dropBtn.on('mouseleave',function () {
+       //          let index=$(this).index('li:has(.droplist)');
+       //          // $(drop[index]).slideUp();
+       //          $(drop).eq(index).slideUp(10,'linear');
+       //      })
+
+            dropBtn.hover(function () {
+                let index=$(this).index('li:has(.droplist)');
+                $(drop).eq(index).slideToggle();
+            })
+
+        })
+    </script>
+</body>
+</html>
